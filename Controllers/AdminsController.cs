@@ -68,7 +68,7 @@ namespace BooksMagazine.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public IActionResult GetToken(TokenParamater tokenParamater)
         {
