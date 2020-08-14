@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BooksMagazine.Models.AboutModels.Team>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container">
+        <h1>Index</h1>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        Teams
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                    @foreach (var item1 in item.Workers)
+                    {
+                        <tr>
+                            <td>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.ImageLink)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.FullName)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.Profession)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.FacebookLink)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.GoogleLink)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.TwitterLink)</th>
+                                            <th>@Html.DisplayNameFor(modelItem => item1.LinkedInLink)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="~/images/@item1.ImageLink" style="width:120px" class="img-fluid" /></td>
+                                            <td>@Html.DisplayFor(modelItem => item1.FullName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item1.Profession)</td>
+                                            <td>@Html.DisplayFor(modelItem => item1.FacebookLink)</td>
+                                            <td>@Html.DisplayFor(modelItem => item1.GoogleLink)</td>
+                                            <td>@Html.DisplayFor(modelItem => item1.TwitterLink)</td>
+                                            <td>@Html.DisplayFor(modelItem => item1.LinkedInLink)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BooksMagazine.Models.Book>
+
+@{
+    ViewData["Title"] = "Type";
+}
+
+ 
+
+<!-- full Title -->
+<div class="full-title">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3"> @Model.FirstOrDefault().Type </h1>
+        <div class="breadcrumb-main">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active">@Model.FirstOrDefault().Type</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="portfolio-col">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a class="hover-box" asp-controller="Books" asp-action="Details" asp-route-id="@item.Id">
+                            <div class="dot-full">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <img class="card-img-top" src="/images/@item.CoverImage" alt="" />
+                        </a>
+                        <div class="card-body">
+                            <h4><a href="#">@item.Title</a></h4>
+                            <p>@item.AuthorName</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

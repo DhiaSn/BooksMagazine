@@ -1,0 +1,54 @@
+﻿@model BooksMagazine.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<!-- full Title -->
+<div class="full-title">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">@Model.Title</h1>
+        <div class="breadcrumb-main">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active">@Model.Title</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="item-pro">
+    <div class="container">
+        <!-- Portfolio Item Row -->
+        <div class="row">
+            <div class="col-md-8">
+                <img class="img-fluid" src="/images/@Model.CoverImage" alt="" />
+            </div>
+            <div class="col-md-4">
+                <h3 class="my-3">Phasellus et nisi ut sapien ultricies laoreet.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <h3 class="my-3">Book info</h3>
+                <ul>
+                    <li><span>type:</span><span>@Model.Type</span></li>
+                    <li><span>Title:</span><span>@Model.Title</span></li>
+                    <li><span>Author:</span><span>@Model.AuthorName</span></li>
+                    <li><span>Release Date:</span><span>@Model.ReleaseDate.Date</span></li>
+                </ul>
+                <br />
+                <a href="~/Books/@Model.Link" class="btn btn-outline-primary">Download</a>
+            </div>
+            
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+
+    </div>
+</div>

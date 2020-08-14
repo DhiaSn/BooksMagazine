@@ -1,0 +1,126 @@
+﻿@model IEnumerable<BooksMagazine.Models.AboutModels.About>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- full Title -->
+<div class="full-title">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3"> About Us</h1>
+        <div class="breadcrumb-main">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active"> About Us </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- About Content -->
+    @foreach (var item in Model)
+    {
+        <div class="about-main">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded mb-4" src="images/about-img.jpg" alt="" />
+                </div>
+                <div class="col-lg-6">
+                    <h2>@Html.DisplayFor(modelItem => item.AboutUs.Title)</h2>
+                    <p>@Html.DisplayFor(modelItem => item.AboutUs.Description)</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    }
+
+</div>
+<div class="about-inner">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <!--Our Mission-->
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="left-ab">
+                        <h3>@Html.DisplayFor(modelItem => item.Messions.Title)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Messions.Description)</p>
+                        <ul>
+                            @foreach (var item1 in item.Messions.Purposes)
+                            {
+                                <li>@Html.DisplayFor(modelItem => item1.Description)</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-ab">
+                        <img class="img-fluid rounded mb-4" src="images/@item.Messions.ImageLink" alt="" />
+                    </div>
+                </div>
+            </div>
+        }
+        @foreach (var item in Model)
+        {
+            <!--Our Vision-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="right-ab">
+                        <img class="img-fluid rounded mb-4" src="images/@item.Vision.ImageLink" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="left-ab">
+                        <h3>@Html.DisplayFor(modelItem=>item.Vision.Title)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Vision.Description)</p>
+                        <ul>
+                            @foreach (var item1 in item.Vision.Purposes)
+                            {
+                                <li>@Html.DisplayFor(modelItem=>item1.Description)</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<div class="container">
+    <!-- Team Members -->
+    <div class="team-members-box">
+        @foreach (var item in Model)
+        {
+            <h2>@Html.DisplayFor(modelItem=>item.Team.Title)</h2>
+            <div class="row">
+                @foreach (var item1 in item.Team.Workers)
+                {
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100 text-center">
+                            <div class="our-team">
+                                <img class="img-fluid" src="images/@item1.ImageLink" alt="" />
+                                <div class="team-content">
+                                    <h3 class="title">@Html.DisplayFor(modelItem => item1.FullName)</h3>
+                                    <span class="post">@Html.DisplayFor(modelItem => item1.Profession)</span>
+                                    <ul class="social">
+                                        <li><a href="@item1.FacebookLink"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a href="@item1.GoogleLink"><i class="fab fa-google-plus"></i></a></li>
+                                        <li><a href="@item1.TwitterLink"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="@item1.LinkedInLink"><i class="fab fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+        <!-- /.row -->
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿@model BooksMagazine.ViewModels.BookViewModels.CreateBookViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<!-- full Title -->
+<div class="full-title">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3"> Create a Book </h1>
+        <div class="breadcrumb-main">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Create a Book</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="contact-main">
+    <div class="container">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-lg-8 mb-4  ">
+                <h3>Create a Book</h3>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <input asp-for="Type" type="text" placeholder="@Html.DisplayNameFor(modelItem=>Model.Type)" class="form-control">
+                            <p class="help-block"></p>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input asp-for="Title" type="tel" placeholder="@Html.DisplayNameFor(modelItem=>Model.Title)" class="form-control">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input asp-for="AuthorName" placeholder="@Html.DisplayNameFor(modelItem=>Model.AuthorName)" class="form-control">
+                            <span asp-validation-for="AuthorName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <input asp-for="ReleaseDate" type="date" placeholder="@Html.DisplayNameFor(modelItem=>Model.AuthorName)" class="form-control">
+                            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <h5>@Html.DisplayNameFor(modelItem => Model.CoverImageFile)</h5>
+                            <input asp-for="CoverImageFile" type="file" class="form-control">
+                            <span asp-validation-for="CoverImageFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <h5>@Html.DisplayNameFor(modelItem => Model.BookFile)</h5>
+                            <input asp-for="BookFile" type="file" class="form-control">
+                            <span asp-validation-for="BookFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="controls">
+                            <textarea asp-for="Description" rows="5" cols="100" placeholder="@Html.DisplayNameFor(modelItem=>Model.Description)" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <input  type="hidden"  asp-for="History"/>
+                    <button type="submit" value="Create" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

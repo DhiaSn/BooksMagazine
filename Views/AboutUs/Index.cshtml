@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BooksMagazine.Models.AboutModels.AboutUs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container">
+        <h1>Index</h1>
+        <table class="table">
+            <thead>
+                <tr>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImageLink)
+                        </th>
+                        <td>
+                            <img src="~/images/@item.ImageLink" style="width:500px" class="img-fluid" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => item.Description)
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>

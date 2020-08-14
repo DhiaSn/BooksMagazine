@@ -1,0 +1,141 @@
+﻿@model IEnumerable<BooksMagazine.Models.HomeModels.Home>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!--Header-->
+<header class="slider-main">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <!-- Tag_Pictures Buttons -->
+        <div>
+            @foreach (var item in Model)
+            {
+                <ol class="carousel-indicators">
+                    @for (int i = 0; i < item.CarouselItems.Count; i++)
+                    {
+                        if (i == 0)
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="i" class="active"></li>
+                        }
+                        else
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="i"></li>
+                        }
+                    }
+
+                </ol>
+            }
+        </div>
+        <!--Pictures Slides-->
+        <div class="carousel-inner" role="listbox">
+
+            @foreach (var item in Model)
+            {
+                var i = 0;
+                foreach (var item1 in item.CarouselItems)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active" style="background-image: url('images/@item1.ImageLink')">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>@Html.DisplayFor(modelItem => item1.Title)</h3>
+                                <p>@Html.DisplayFor(modelItem => item1.Quote)</p>
+                            </div>
+                        </div>
+                    }
+                    if (i > 0)
+                    {
+                        <div class="carousel-item" style="background-image: url('images/@item1.ImageLink')">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>@Html.DisplayFor(modelItem => item1.Title)</h3>
+                                <p>@Html.DisplayFor(modelItem => item1.Quote)</p>
+                            </div>
+                        </div>
+                    }
+
+                    i++;
+                }
+            }
+        </div>
+
+        <!-- Previous_Next Buttons -->
+        <div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+
+    </div>
+</header>
+
+
+<div class="container">
+    <!-- About Section -->
+    <div class="about-main">
+        <div class="row">
+            <!--Welcome_to_Zonebiz: Sectons-->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6">
+                    <h2>@Html.DisplayFor(modelItem => item.Welcome.Title)</h2>
+                    <p>@Html.DisplayFor(modelItem => item.Welcome.Description)</p>
+                    <h5>@Html.DisplayFor(modelItem => item.Welcome.GoalTitle)</h5>
+                    <ul>
+                        @foreach (var item1 in item.Welcome.Purposes)
+                        {
+                            <li>@Html.DisplayFor(modelItem => item1.Description)</li>
+                        }
+                    </ul>
+                </div>
+                <!--A_side_image Section -->
+                <div class="col-lg-6">
+                    <img class="img-fluid rounded" src="images/about-img.jpg" alt="" />
+                </div>
+            }
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+
+<!--Our_Best_Services Section-->
+<div class="services-bar">
+    <div class="container">
+        <h1 class="py-4">Our Topics </h1>
+        <!-- Services Section: Pictures -->
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <!--Picture -->
+                @foreach (var item1 in item.Topics)
+                {
+                    <div class="col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-img">
+                                <img class="img-fluid" src="~/images/@item1.ImageLink" alt="" />
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-header"> @Html.DisplayFor(modelItem => item1.Title) </h4>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />

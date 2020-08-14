@@ -1,0 +1,74 @@
+﻿@model BooksMagazine.ViewModels.ContactUsViewModels.CreateContactUsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<!-- full Title -->
+<div class="full-title">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3"> Contact </h1>
+        <div class="breadcrumb-main">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Contact Us</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="contact-main">
+    <div class="container">
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-lg-8 mb-4">
+                <h3>Create a Book</h3>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <input asp-for="Name" type="text" placeholder="@Html.DisplayNameFor(modelItem=>Model.Name)" class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <input asp-for="Email" type="text" placeholder="@Html.DisplayNameFor(modelItem=>Model.Email)" class="form-control">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <input asp-for="PhoneNumber" type="text" placeholder="@Html.DisplayNameFor(modelItem=>Model.PhoneNumber)" class="form-control">
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <input asp-for="Subject" type="text" placeholder="@Html.DisplayNameFor(modelItem=>Model.Subject)" class="form-control">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="form-group">
+                            <textarea asp-for="Description" rows="5" cols="100" placeholder="@Html.DisplayNameFor(modelItem=>Model.Description)" class="form-control"></textarea>
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <input type="hidden" asp-for="Topic" />
+                    <button type="submit" value="Create" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
